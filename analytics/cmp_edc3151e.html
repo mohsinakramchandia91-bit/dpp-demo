@@ -1,93 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8" />
   <title>Company Analytics</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background:#f4f6f8;
-      padding:30px;
+      background: #f4f6f8;
+      padding: 20px;
     }
     .card {
-      max-width:800px;
-      margin:auto;
-      background:white;
-      padding:24px;
-      border-radius:10px;
-      box-shadow:0 10px 30px rgba(0,0,0,.08);
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
-    h2 { margin-top:0 }
+    .stats {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
     .stat {
-      display:inline-block;
-      width:45%;
-      margin:10px 2%;
-      padding:16px;
-      background:#f8fafc;
-      border-radius:8px;
-      text-align:center;
+      flex: 1;
+      background: #f1f5f9;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
     }
-    .num {
-      font-size:28px;
-      font-weight:bold;
-      color:#2563eb;
+    .stat h2 {
+      margin: 0;
+      color: #2563eb;
     }
     canvas {
-      margin-top:30px;
+      margin-top: 20px;
     }
     .footer {
-      margin-top:24px;
-      font-size:12px;
-      color:#777;
-      text-align:center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
     }
   </style>
 </head>
+
 <body>
+  <div class="card">
+    <h1>📊 Company Analytics</h1>
 
-<div class="card">
-  <h2>📊 Company Analytics</h2>
+    <div class="stats">
+      <div class="stat">
+        <p>Total Events</p>
+        <h2 id="totalEvents">–</h2>
+      </div>
+      <div class="stat">
+        <p>Public Views</p>
+        <h2 id="publicViews">–</h2>
+      </div>
+      <div class="stat">
+        <p>Verify Checks</p>
+        <h2 id="verifyChecks">–</h2>
+      </div>
+    </div>
 
-  <div class="stat">
-    <div class="num">12</div>
-    Total Events
+    <canvas id="chart" height="120"></canvas>
+
+    <div class="footer">
+      Analytics auto-generated • Secure & Tamper-proof
+    </div>
   </div>
-
-  <div class="stat">
-    <div class="num">8</div>
-    Public Views
-  </div>
-
-  <div class="stat">
-    <div class="num">4</div>
-    Verify Checks
-  </div>
-
-  <canvas id="chart" height="120"></canvas>
-
-  <div class="footer">
-    Analytics auto-generated • Secure & Tamper-proof
-  </div>
-</div>
 
 <script>
-const ctx = document.getElementById('chart');
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['Public Views', 'Verify Checks'],
-    datasets: [{
-      label: 'Activity',
-      data: [8, 4],
-      backgroundColor: ['#22c55e', '#2563eb']
-    }]
-  },
-  options: {
-    responsive:true,
-    plugins:{ legend:{ display:false } }
-  }
-});
+const API_BASE = "https://dpp-backend.up.railway.app";
+
+fetch(API_BASE + "/api/analytics/cmp_edc3151e")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("totalEvents").innerText = data.total_events;
+    document.getElementById("publicViews").innerText = data.public_views;
+    document.getElementById("verifyChecks").innerText = data.verify_checks;
+
+    const ctx = document.getElementById("chart").getContext("2d");
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: ["Public Views", "Verify Checks"],
+        datasets: [{
+          label: "Activity",
+          data: [data.public_views, data.verify_checks],
+          backgroundColor: ["#22c55e", "#2563eb"]
+        }]
+      }
+    });
+  })
+  .catch(err => {
+    alert("Backend API not reachable");
+    console.error(err);
+  });
 </script>
 
 </body>
