@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Company Analytics</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body{
+  margin:0;
+  font-family:Inter,Arial;
+  background:#f1f5f9;
+}
+.container{
+  max-width:900px;
+  margin:40px auto;
+}
+.card{
+  background:#fff;
+  border-radius:14px;
+  padding:24px;
+  margin-bottom:24px;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+h1{margin:0 0 6px;}
+.sub{color:#64748b;font-size:14px;}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+.stat{
+  background:#f8fafc;
+  border-radius:12px;
+  padding:16px;
+  text-align:center;
+}
+.stat h2{margin:0;color:#2563eb;}
+.footer{
+  text-align:center;
+  font-size:12px;
+  color:#64748b;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<div class="card">
+<h1>📊 Company Analytics</h1>
+<p class="sub">Pak Textile Ltd — Digital Product Passport</p>
+
+<div class="stats">
+  <div class="stat">
+    <h2 id="views">0</h2>
+    <p>Public Views</p>
+  </div>
+  <div class="stat">
+    <h2 id="verifies">0</h2>
+    <p>Verify Checks</p>
+  </div>
+  <div class="stat">
+    <h2 id="products">1</h2>
+    <p>Products</p>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<canvas id="eventsChart"></canvas>
+</div>
+
+<div class="footer">
+Analytics collected anonymously • Buyer-safe • GDPR friendly
+</div>
+</div>
+
+<script>
+// ---- MOCK DATA (replace later with JSON fetch) ----
+const events = [
+  {event:"public_view"},
+  {event:"verify_check"},
+  {event:"verify_check"},
+  {event:"public_view"},
+  {event:"public_view"}
+];
+
+const views = events.filter(e=>e.event==="public_view").length;
+const verifies = events.filter(e=>e.event==="verify_check").length;
+
+document.getElementById("views").innerText = views;
+document.getElementById("verifies").innerText = verifies;
+
+new Chart(document.getElementById('eventsChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Public Views', 'Verify Checks'],
+    datasets: [{
+      label: 'Events',
+      data: [views, verifies],
+      backgroundColor: ['#2563eb','#16a34a']
+    }]
+  },
+  options:{
+    responsive:true,
+    plugins:{legend:{display:false}}
+  }
+});
+</script>
+
+</body>
+</html>
