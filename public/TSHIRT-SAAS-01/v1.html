@@ -1,61 +1,121 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Digital Product Passport</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial, sans-serif; background:#f7f7f7; }
-.container { max-width: 900px; margin: auto; background: #fff; padding: 20px; }
-.header { border-bottom: 2px solid #ddd; margin-bottom: 20px; }
-.status-pass { background:#d4f4dd; color:#0a7d2c; padding:6px 10px; border-radius:6px; }
-.card { border:1px solid #ddd; border-radius:6px; padding:15px; margin-bottom:15px; }
-.qr-box { background:#f0f8ff; padding:12px; border-radius:6px; }
-.footer { font-size:12px; color:#555; border-top:1px solid #ddd; padding-top:10px; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 20px;
+}
+.card {
+  max-width: 720px;
+  margin: auto;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.badge {
+  display: inline-block;
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+}
+h1 {
+  margin-top: 14px;
+  font-size: 26px;
+}
+.label {
+  color: #777;
+  font-size: 13px;
+  margin-top: 14px;
+}
+.value {
+  font-size: 15px;
+  font-weight: 600;
+}
+.section {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+.bar {
+  width: 100%;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+.fill {
+  height: 100%;
+  width: 95%;
+  background: #4caf50;
+}
+.footer {
+  margin-top: 32px;
+  font-size: 12px;
+  color: #777;
+  border-top: 1px solid #eee;
+  padding-top: 14px;
+}
+.pass {
+  color: #2e7d32;
+  font-weight: 700;
+}
 </style>
 </head>
 
 <body>
-<div class="container">
-
-<div class="header">
-<h2>Digital Product Passport</h2>
-<p><strong>Product ID:</strong> TSHIRT-SAAS-01</p>
-<p><strong>Batch ID:</strong> BATCH-001</p>
-<p><strong>Version:</strong> 1</p>
-<p><strong>Created:</strong> 2026-01-31T11:55:19.718704</p>
-<p>Status: <span class="status-pass">PASS</span></p>
-</div>
-
 <div class="card">
-<h3>Material Information</h3>
-<p><strong>Material:</strong> cotton</p>
-<p><strong>Cotton %:</strong> 95%</p>
-<p><strong>Data Confidence:</strong> 50%</p>
-</div>
 
-<div class="card">
-<h3>Sustainability</h3>
-<p><strong>Energy Source:</strong> solar</p>
-<p><strong>Carbon Impact:</strong> Low (self-declared)</p>
-</div>
+  <div class="badge">✔ VERIFIED DIGITAL PRODUCT</div>
 
-<div class="card">
-<h3>Compliance</h3>
-<p>Compliant with declared data</p>
-</div>
+  <h1>Digital Product Passport</h1>
 
-<div class="qr-box">
-<h3>Public Verification</h3>
-<p>Open this passport:</p>
-<pre>data/public/TSHIRT-SAAS-01/v1.html</pre>
-</div>
+  <div class="label">Product ID</div>
+  <div class="value">TSHIRT-SAAS-01</div>
 
-<div class="footer">
-Self-declared manufacturer data.<br>
-Cryptographically verifiable.<br>
-Independent audit supported.
-</div>
+  <div class="label">Batch ID</div>
+  <div class="value">BATCH-001</div>
+
+  <div class="label">Version</div>
+  <div class="value">1</div>
+
+  <div class="label">Status</div>
+  <div class="value pass">PASS</div>
+
+  <div class="section">
+    <h3>🧵 Material Composition</h3>
+    <p>Cotton — <strong>95%</strong></p>
+    <div class="bar"><div class="fill"></div></div>
+    <p class="label">Data confidence: Medium</p>
+  </div>
+
+  <div class="section">
+    <h3>🌱 Sustainability</h3>
+    <p>Energy source: <strong>Solar</strong></p>
+    <p>Carbon impact: Low (self-declared)</p>
+  </div>
+
+  <div class="section">
+    <h3>📜 Compliance</h3>
+    <p>EU Digital Product Passport: <strong class="pass">PASS</strong></p>
+    <p>Independent verification supported</p>
+  </div>
+
+  <div class="footer">
+    This Digital Product Passport is cryptographically protected.<br>
+    Any buyer, regulator, or auditor can independently verify this record.
+  </div>
 
 </div>
 </body>
