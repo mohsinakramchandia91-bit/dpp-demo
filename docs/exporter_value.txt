@@ -1,0 +1,31 @@
+WHY EXPORTERS USE THIS SYSTEM
+=============================
+
+1. EU COMPLIANCE
+---------------
+- Digital Product Passport ready
+- Lifecycle traceability
+- Audit packages generated automatically
+
+2. ZERO INFRASTRUCTURE
+----------------------
+- Runs on laptop / mobile
+- No servers
+- No subscriptions
+
+3. RISK VISIBILITY
+------------------
+- PASS / WARN / FAIL clearly shown
+- Guidance provided for missing data
+
+4. BUYER TRUST
+--------------
+- Public, verifiable proof
+- Tamper detection
+- Independent verification
+
+5. COST SAVING
+--------------
+- No consultants
+- No SaaS lock-in
+- No recurring cloud fees

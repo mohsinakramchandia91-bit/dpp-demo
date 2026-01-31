@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Digital Product Passport</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h1 { color: #2c3e50; }
+    .status { font-weight: bold; }
+    .PASS { color: green; }
+    .WARN { color: orange; }
+    .FAIL { color: red; }
+    pre { background: #f4f4f4; padding: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Digital Product Passport</h1>
+
+  <p><strong>Product ID:</strong> TSHIRT-EU-01</p>
+  <p><strong>Batch ID:</strong> BATCH-99</p>
+  <p><strong>Version:</strong> 1</p>
+  <p><strong>Created At:</strong> 2026-01-31T07:28:19.441158</p>
+
+  <p class="status PASS">
+    Status: PASS
+  </p>
+
+  <h2>Batch Data</h2>
+  <pre>{'material': {'value': 'cotton', 'unit': None, 'source': 'manual', 'confidence': 50}, 'cotton_percent': {'value': 85, 'unit': None, 'source': 'manual', 'confidence': 50}, 'energy_source': {'value': 'solar', 'unit': None, 'source': 'manual', 'confidence': 50}, 'origin_country': {'value': 'PK', 'unit': None, 'source': 'manual', 'confidence': 50}}</pre>
+
+  <h2>Compliance</h2>
+  <pre>{'batch_confidence': 50, 'status': 'PASS', 'risks': [], 'guidance': []}</pre>
+
+</body>
+</html>

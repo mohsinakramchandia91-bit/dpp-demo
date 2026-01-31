@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Digital Product Passport</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .status.PASS { color: green; font-weight: bold; }
+    .status.WARN { color: orange; font-weight: bold; }
+    .status.FAIL { color: red; font-weight: bold; }
+    pre { background: #f4f4f4; padding: 10px; }
+    .qr-box {
+      border: 2px dashed #333;
+      padding: 15px;
+      margin-top: 20px;
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Digital Product Passport</h1>
+
+<p><strong>Product ID:</strong> TSHIRT-EU-QR</p>
+<p><strong>Batch ID:</strong> BATCH-QR-08</p>
+<p><strong>Version:</strong> 6</p>
+<p><strong>Created At:</strong> 2026-01-31T08:49:15.361752</p>
+
+<p class="status PASS">Status: PASS</p>
+
+<h2>Batch Data</h2>
+<pre>{'material': {'value': 'cotton', 'unit': None, 'source': 'manual', 'confidence': 50}, 'cotton_percent': {'value': 99, 'unit': None, 'source': 'manual', 'confidence': 50}, 'energy_source': {'value': 'solar', 'unit': None, 'source': 'manual', 'confidence': 50}, 'origin_country': {'value': 'PK', 'unit': None, 'source': 'manual', 'confidence': 50}}</pre>
+
+<h2>Compliance</h2>
+<pre>{'batch_confidence': 50, 'status': 'PASS', 'risks': [], 'guidance': []}</pre>
+
+<div class="qr-box">
+  <h2>QR / Public Access</h2>
+  <p><strong>Open DPP:</strong></p>
+  <p>data/public/TSHIRT-EU-QR/v6.html</p>
+  <pre>OPEN DPP:\ndata/public/TSHIRT-EU-QR/v6.html</pre>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+LDCE / DPP SYSTEM – ARCHITECTURE FREEZE
+====================================
+
+This document defines the final, frozen architecture of the system.
+Any future changes must be additive and versioned.
+
+CORE PRINCIPLES
+---------------
+1. Append-only data model
+2. No destructive updates
+3. Deterministic logic
+4. Verifiable outputs
+5. Human + machine readable artifacts
+
+SYSTEM LAYERS
+-------------
+1. INGESTION
+2. NORMALIZATION
+3. AGGREGATION
+4. COMPLIANCE
+5. DPP CORE
+6. PUBLIC VIEW
+7. PROOF LAYER
+8. AUDIT PACKAGE
+9. LIFECYCLE
+
+ARCHITECTURE STATUS
+-------------------
+FROZEN (Day 15)

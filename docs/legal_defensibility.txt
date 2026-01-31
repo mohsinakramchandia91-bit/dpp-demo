@@ -1,0 +1,41 @@
+LDCE / DPP SYSTEM – LEGAL DEFENSIBILITY
+======================================
+
+This system is designed to be legally defensible under EU DPP principles.
+
+KEY POINTS
+----------
+
+1. NO CLAIMS WITHOUT CONTEXT
+   - All values include confidence scores
+   - Source type is preserved
+
+2. TRACEABILITY OVER PERFECTION
+   - System records what was known, when
+   - Does not fabricate missing data
+
+3. IMMUTABLE HISTORY
+   - Past DPP versions remain accessible
+   - Lifecycle events are append-only
+
+4. INDEPENDENT VERIFICATION
+   - Cryptographic hash can be verified externally
+   - No vendor dependency for verification
+
+5. HUMAN + MACHINE READABLE
+   - summary.txt for auditors
+   - JSON for systems
+   - HTML for buyers/consumers
+
+LEGAL POSITION
+--------------
+This system does not assert absolute truth.
+It asserts:
+- Data lineage
+- Decision logic
+- Tamper evidence
+
+This aligns with EU regulatory expectations for
+Digital Product Passports.
+
+END OF STATEMENT

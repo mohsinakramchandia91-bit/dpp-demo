@@ -1,0 +1,26 @@
+EXPORTER ONBOARDING – LDCE / DPP
+===============================
+
+This system requires NO user accounts and NO cloud setup.
+
+Exporter Identity
+-----------------
+Each exporter is identified by a FACTORY_ID.
+
+Example:
+- PK-FACTORY-001
+- BD-FACTORY-ALPHA
+- IN-TEXTILE-07
+
+FACTORY_ID Rules:
+- Uppercase
+- No spaces
+- Stable (never changes)
+
+The FACTORY_ID becomes the data boundary.
+No factory can see another factory’s data.
+
+Onboarding Cost:
+- Zero
+- No registration
+- No external dependency

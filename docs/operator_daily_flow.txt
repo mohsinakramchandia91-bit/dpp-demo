@@ -1,0 +1,33 @@
+OPERATOR DAILY FLOW
+===================
+
+STEP 1: Create / Update Batch Data
+----------------------------------
+Command:
+python -m core.cli_operator <PRODUCT_ID> <BATCH_ID> '<JSON_PAYLOAD>'
+
+Example:
+python -m core.cli_operator TSHIRT-001 BATCH-22 \
+'{"material":"cotton","cotton_percent":80,"energy_source":"solar"}'
+
+STEP 2: System Generates
+-----------------------
+- Normalized data
+- Compliance status (PASS / WARN / FAIL)
+- Public DPP HTML
+- Proof JSON (hash)
+
+STEP 3: Share with Buyer
+------------------------
+Exporter shares:
+- Public HTML link
+OR
+- Proof JSON + DPP JSON
+
+No backend access required.
+
+STEP 4: Buyer / Auditor Verifies
+--------------------------------
+python -m proof.cli <PRODUCT_ID> <VERSION>
+
+No exporter involvement required.

@@ -1,0 +1,66 @@
+LDCE / DPP SYSTEM – THREAT MODEL
+===============================
+
+This document lists realistic threats and mitigations.
+
+THREAT 1: DATA TAMPERING (POST-CREATION)
+----------------------------------------
+Risk:
+- Someone edits DPP JSON after generation
+
+Mitigation:
+- SHA256 proof generated from full DPP
+- Independent verification CLI
+- Any change invalidates proof
+
+Status: MITIGATED
+
+THREAT 2: FALSE DATA AT INPUT
+-----------------------------
+Risk:
+- Operator provides incorrect values
+
+Mitigation:
+- Confidence scoring
+- Source tagging
+- Explicit WARN / FAIL states
+- Guidance prompts for verification
+
+Status: ACCEPTED (by regulation)
+
+NOTE:
+EU regulation does NOT require truth, it requires traceability.
+
+THREAT 3: VERSION OVERWRITE
+---------------------------
+Risk:
+- Old DPP versions lost
+
+Mitigation:
+- Versioned storage (v1, v2, v3...)
+- No overwrite logic exists
+
+Status: MITIGATED
+
+THREAT 4: UNAUTHORIZED VERIFICATION
+-----------------------------------
+Risk:
+- Auditor needs special access
+
+Mitigation:
+- Read-only CLI
+- No secrets
+- Public hash comparison
+
+Status: MITIGATED
+
+THREAT 5: SYSTEM MISINTERPRETATION
+----------------------------------
+Risk:
+- Auditor misunderstands output
+
+Mitigation:
+- Human-readable summary.txt
+- Explicit risk + guidance language
+
+Status: MITIGATED
