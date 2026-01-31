@@ -4,7 +4,7 @@ def get_branding(company_id):
             "company_name": "Pak Textile Ltd",
             "logo_url": "https://via.placeholder.com/140x40?text=PAK+TEXTILE",
             "primary_color": "#0f766e",
-            "footer": "© 2026 Pak Textile Ltd – Verified Supply Chain"
+            "footer": "© 2026 Pak Textile Ltd — Verified Supply Chain"
         },
         "default": {
             "company_name": "Digital Product Passport",

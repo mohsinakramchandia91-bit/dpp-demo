@@ -1,145 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Digital Product Passport</title>
-
-<style>
-body {
-    margin: 0;
-    font-family: Inter, Arial, sans-serif;
-    background: linear-gradient(180deg, #f8fafc, #eef2f7);
-    color: #0f172a;
-}
-
-.container {
-    max-width: 720px;
-    margin: 32px auto;
-    padding: 0 16px;
-}
-
-.card {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 28px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.badge {
-    background: #16a34a;
-    color: #fff;
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-h1 {
-    margin: 8px 0 4px;
-    font-size: 26px;
-}
-
-.sub {
-    color: #475569;
-    font-size: 14px;
-}
-
-.section {
-    margin-top: 28px;
-}
-
-.section h3 {
-    font-size: 18px;
-    margin-bottom: 12px;
-}
-
-.row {
-    display: flex;
-    justify-content: space-between;
-    margin: 6px 0;
-    font-size: 15px;
-}
-
-.bar {
-    height: 10px;
-    background: #e5e7eb;
-    border-radius: 999px;
-    overflow: hidden;
-    margin-top: 6px;
-}
-
-.fill {
-    height: 100%;
-    width: 95%;
-    background: linear-gradient(90deg, #22c55e, #16a34a);
-}
-
-.ok {
-    color: #16a34a;
-    font-weight: 600;
-}
-
-.footer {
-    margin-top: 32px;
-    padding-top: 18px;
-    border-top: 1px solid #e5e7eb;
-    font-size: 13px;
-    color: #64748b;
-    text-align: center;
-}
-</style>
+  <title>DPP System</title>
+  <style>
+    body { font-family: Arial; background:#f4f6f8; }
+    .card { max-width:700px; margin:40px auto; background:white; padding:24px; border-radius:10px; }
+    a { display:block; margin:10px 0; font-size:16px; }
+  </style>
 </head>
-
 <body>
-<div class="container">
-<div class="card">
-
-<div class="header">
-    <div>
-        <h1>Digital Product Passport</h1>
-        <div class="sub">EU-style verified product record</div>
-    </div>
-    <div class="badge">✔ VERIFIED</div>
-</div>
-
-<div class="section">
-    <div class="row"><strong>Product ID</strong><span>TSHIRT-SAAS-01</span></div>
-    <div class="row"><strong>Batch</strong><span>BATCH-001</span></div>
-    <div class="row"><strong>Version</strong><span>1</span></div>
-</div>
-
-<div class="section">
-    <h3>Material Composition</h3>
-    <div class="row"><span>Cotton</span><span><strong>95%</strong></span></div>
-    <div class="bar"><div class="fill"></div></div>
-    <div class="sub">Data confidence: Medium</div>
-</div>
-
-<div class="section">
-    <h3>Sustainability</h3>
-    <div class="row"><span>Energy Source</span><span>Solar ☀️</span></div>
-    <div class="row"><span>Carbon Impact</span><span>Low (self-declared)</span></div>
-</div>
-
-<div class="section">
-    <h3>Compliance</h3>
-    <div class="row"><span>EU Digital Product Passport</span><span class="ok">PASS</span></div>
-    <div class="row"><span>Independent verification</span><span class="ok">Supported</span></div>
-</div>
-
-<div class="footer">
-    Cryptographically protected record<br>
-    Any buyer, regulator, or auditor can verify this page
-</div>
-
-</div>
-</div>
+  <div class="card">
+    <h2>📦 Digital Product Passport</h2>
+    <a href="public/TSHIRT-SAAS-01/v1.html">🟢 Buyer Public Passport</a>
+    <a href="verify/TSHIRT-SAAS-01-v1.html">🔍 Buyer Verify Page</a>
+    <a href="analytics/cmp_edc3151e.html">📊 Company Analytics Dashboard</a>
+    <p style="font-size:12px;color:#666">Auto-generated system pages</p>
+  </div>
 </body>
 </html>

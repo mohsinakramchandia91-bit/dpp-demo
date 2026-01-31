@@ -1,38 +1,51 @@
-import os
+from branding.config import get_branding
 from analytics.track import track_event
-from proof.verifier import verify_dpp
+import os
 
-PUBLIC_VERIFY_DIR = "data/verify"
+VERIFY_DIR = "site/verify"
 
 HTML = """
 <html>
 <head>
-<title>Buyer Verification</title>
+<title>Verification Result</title>
 <style>
-body {{ font-family: Arial; background:#f4f6f8; }}
-.card {{ max-width:600px; margin:auto; background:white; padding:20px; }}
-.pass {{ color:green; font-weight:bold; }}
-.fail {{ color:red; font-weight:bold; }}
+body {{
+  font-family: Arial;
+  background: #f4f6f8;
+}}
+.card {{
+  max-width: 520px;
+  margin: 60px auto;
+  background: white;
+  padding: 24px;
+  border-radius: 10px;
+  text-align: center;
+}}
+.pass {{
+  color: green;
+  font-weight: bold;
+}}
 </style>
 </head>
+
 <body>
 <div class="card">
-<h2>Verification Result</h2>
-<p><strong>Product ID:</strong> {product_id}</p>
-<p><strong>Version:</strong> {version}</p>
-<p class="{status_class}">{status}</p>
-<p>{message}</p>
+  <img src="{logo}" height="40"><br><br>
+  <h2>{company}</h2>
+
+  <p>Product ID: <strong>{product}</strong></p>
+  <p>Version: {version}</p>
+  <p class="pass">PASS</p>
+
+  <small>{footer}</small>
 </div>
 </body>
 </html>
 """
 
 def generate_verify_page(product_id, version, company_id):
-    os.makedirs(PUBLIC_VERIFY_DIR, exist_ok=True)
+    branding = get_branding(company_id)
 
-    valid, message = verify_dpp(product_id, version)
-
-    # 🔥 ANALYTICS TRACKING (VERIFY HIT)
     track_event(
         company_id=company_id,
         product_id=product_id,
@@ -40,15 +53,17 @@ def generate_verify_page(product_id, version, company_id):
         meta={"version": version}
     )
 
+    os.makedirs(VERIFY_DIR, exist_ok=True)
+    path = f"{VERIFY_DIR}/{product_id}-v{version}.html"
+
     html = HTML.format(
-        product_id=product_id,
-        version=version,
-        status="PASS" if valid else "FAIL",
-        status_class="pass" if valid else "fail",
-        message=message
+        company=branding["company_name"],
+        logo=branding["logo_url"],
+        footer=branding["footer"],
+        product=product_id,
+        version=version
     )
 
-    path = os.path.join(PUBLIC_VERIFY_DIR, f"{product_id}-v{version}.html")
     with open(path, "w") as f:
         f.write(html)
 

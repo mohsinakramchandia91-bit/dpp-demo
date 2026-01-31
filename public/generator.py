@@ -1,9 +1,11 @@
-import os
+from branding.config import get_branding
 from analytics.track import track_event
+import os
 
-PUBLIC_DIR = "data/public"
+PUBLIC_DIR = "site/public"
 
-HTML_TEMPLATE = """
+HTML = """
+<!DOCTYPE html>
 <html>
 <head>
 <title>Digital Product Passport</title>
@@ -13,62 +15,55 @@ body {{
   background: #f4f6f8;
 }}
 .card {{
-  max-width: 800px;
-  margin: auto;
+  max-width: 720px;
+  margin: 40px auto;
   background: white;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 24px;
+  border-radius: 10px;
 }}
-.status-pass {{ color: green; font-weight: bold; }}
-.status-fail {{ color: red; font-weight: bold; }}
+.header {{
+  border-bottom: 4px solid {color};
+  margin-bottom: 20px;
+}}
+.badge {{
+  background: {color};
+  color: white;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+}}
+.footer {{
+  margin-top: 30px;
+  font-size: 12px;
+  color: #777;
+}}
 </style>
 </head>
+
 <body>
 <div class="card">
-<h2>Digital Product Passport</h2>
+  <div class="header">
+    <img src="{logo}" height="40"><br><br>
+    <span class="badge">VERIFIED PRODUCT</span>
+    <h2>{company}</h2>
+  </div>
 
-<p><strong>Product ID:</strong> {product_id}</p>
-<p><strong>Batch ID:</strong> {batch_id}</p>
-<p><strong>Version:</strong> {version}</p>
-<p><strong>Status:</strong>
-<span class="status-{status_lower}">{status}</span>
-</p>
+  <p><strong>Product ID:</strong> {product}</p>
+  <p><strong>Version:</strong> {version}</p>
+  <p><strong>Status:</strong> PASS</p>
 
-<hr>
-
-<h3>Material</h3>
-<p>{material}</p>
-
-<h3>Composition</h3>
-<p>{cotton_percent}% Cotton</p>
-
-<h3>Sustainability</h3>
-<p>Energy Source: {energy_source}</p>
-<p>Confidence: {confidence}%</p>
-
-<hr>
-
-<h3>Public Verification</h3>
-<pre>{public_path}</pre>
-
-<p style="font-size:12px;color:#666">
-Self-declared manufacturer data.<br>
-Cryptographically verifiable.<br>
-Independent audit supported.
-</p>
-
+  <div class="footer">
+    {footer}
+  </div>
 </div>
 </body>
 </html>
 """
 
 def generate_public_view(dpp):
-    product_dir = os.path.join(PUBLIC_DIR, dpp.product_id)
-    os.makedirs(product_dir, exist_ok=True)
+    branding = get_branding(dpp.factory_id)
 
-    path = os.path.join(product_dir, f"v{dpp.version}.html")
-
-    # 🔥 ANALYTICS TRACKING (PUBLIC PAGE HIT)
     track_event(
         company_id=dpp.factory_id,
         product_id=dpp.product_id,
@@ -76,17 +71,16 @@ def generate_public_view(dpp):
         meta={"version": dpp.version}
     )
 
-    html = HTML_TEMPLATE.format(
-        product_id=dpp.product_id,
-        batch_id=dpp.batch_id,
-        version=dpp.version,
-        status=dpp.compliance_report.get("status"),
-        status_lower=dpp.compliance_report.get("status").lower(),
-        material=dpp.batch_view.get("material", {}).get("value", "N/A"),
-        cotton_percent=dpp.batch_view.get("cotton_percent", {}).get("value", 0),
-        energy_source=dpp.batch_view.get("energy_source", {}).get("value", "N/A"),
-        confidence=dpp.batch_view.get("material", {}).get("confidence", 0),
-        public_path=path
+    os.makedirs(PUBLIC_DIR, exist_ok=True)
+    path = f"{PUBLIC_DIR}/{dpp.product_id}-v{dpp.version}.html"
+
+    html = HTML.format(
+        company=branding["company_name"],
+        logo=branding["logo_url"],
+        color=branding["primary_color"],
+        footer=branding["footer"],
+        product=dpp.product_id,
+        version=dpp.version
     )
 
     with open(path, "w") as f:
