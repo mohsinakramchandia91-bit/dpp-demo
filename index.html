@@ -1,42 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Digital Product Passport</title>
+  <title>Digital Product Passport (DPP)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: Arial; background:#f4f6f8; }
-    .card {
-      max-width:600px;
-      margin:40px auto;
-      background:#fff;
-      padding:24px;
-      border-radius:8px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.08);
-    }
-    a {
-      display:block;
-      margin:12px 0;
-      text-decoration:none;
-      font-weight:bold;
-      color:#2563eb;
-    }
+    body { font-family: Arial; margin:0; background:#f4f6f8; }
+    .hero { background:#0b1d3a; color:white; padding:50px 20px; text-align:center; }
+    .hero span { background:#1bbf8d; padding:6px 12px; border-radius:20px; font-size:12px; }
+    .container { max-width:1100px; margin:auto; padding:30px 20px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .card { background:white; padding:25px; border-radius:10px; box-shadow:0 5px 20px rgba(0,0,0,0.05); }
+    .price { font-size:32px; font-weight:bold; }
+    .btn { display:inline-block; padding:12px 18px; background:#2563eb; color:white; text-decoration:none; border-radius:6px; margin-top:10px; }
+    .btn.alt { background:#111827; }
+    footer { background:#0b1d3a; color:#ccc; text-align:center; padding:20px; font-size:13px; }
   </style>
 </head>
+
 <body>
 
-<div class="card">
-  <h2>📦 Digital Product Passport</h2>
-
-  <a href="public/TSHIRT-SAAS-01/v1.html">🟢 Buyer Public Passport</a>
-
-  <a href="verify/TSHIRT-SAAS-01-v1.html">🔍 Buyer Verify Page</a>
-
-  <a href="analytics/cmp_edc3151e.html">📊 Company Analytics Dashboard</a>
-
-  <p style="font-size:12px;color:#777">
-    Auto-generated system pages
-  </p>
+<div class="hero">
+  <span>EU-Ready Compliance Platform</span>
+  <h1>Digital Product Passport (DPP)</h1>
+  <p>Automated, verifiable product compliance for exporters & manufacturers</p>
 </div>
+
+<div class="container">
+
+  <h2>Why Digital Product Passport?</h2>
+  <div class="grid">
+    <div class="card">🔒 <b>Tamper-Proof</b><br>Cryptographically verified records</div>
+    <div class="card">🇪🇺 <b>EU Compliant</b><br>Aligned with upcoming DPP regulations</div>
+    <div class="card">🤝 <b>Buyer Trust</b><br>Instant QR & public verification</div>
+  </div>
+
+  <h2 style="margin-top:40px;">What Buyers See</h2>
+  <div class="grid">
+    <div class="card">✅ Verification Page<br>
+      <a class="btn" href="verify/TSHIRT-SAAS-01-v1.html">Open Verify</a>
+    </div>
+    <div class="card">📄 Product Passport<br>
+      <a class="btn" href="public/TSHIRT-SAAS-01/v1.html">Open Passport</a>
+    </div>
+    <div class="card">📊 Analytics<br>
+      <a class="btn" href="analytics/">Company Dashboard</a>
+    </div>
+  </div>
+
+  <h2 style="margin-top:40px;">Pricing</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Starter</h3>
+      <div class="price">$49</div>
+      <p>Up to 50 products<br>1 factory</p>
+      <a class="btn" href="analytics/">Start Trial</a>
+    </div>
+    <div class="card">
+      <h3>Business</h3>
+      <div class="price">$199</div>
+      <p>Up to 500 products<br>5 factories</p>
+      <a class="btn" href="analytics/">Contact Sales</a>
+    </div>
+    <div class="card">
+      <h3>Enterprise</h3>
+      <div class="price">$999</div>
+      <p>Unlimited products<br>Dedicated support</p>
+      <a class="btn alt" href="analytics/">Request Demo</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Digital Product Passport Platform<br>
+  Independent verification · Buyer trust · Regulatory compliance
+</footer>
 
 </body>
 </html>
