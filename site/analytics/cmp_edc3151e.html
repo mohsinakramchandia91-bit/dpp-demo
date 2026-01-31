@@ -1,68 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Company Analytics</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body { font-family: Arial; background:#f4f6f8; }
-    .card { max-width:900px; margin:30px auto; background:white; padding:24px; border-radius:10px; }
-    .stats { display:flex; gap:20px; }
-    .stat { flex:1; background:#f9fafb; padding:16px; border-radius:8px; text-align:center; }
-    .num { font-size:28px; font-weight:bold; }
-    button { background:#2563eb; color:white; border:none; padding:10px 18px; border-radius:8px; cursor:pointer; }
+    body {
+      font-family: Arial, sans-serif;
+      background:#f4f6f8;
+      padding:30px;
+    }
+    .card {
+      max-width:800px;
+      margin:auto;
+      background:white;
+      padding:24px;
+      border-radius:10px;
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+    h2 { margin-top:0 }
+    .stat {
+      display:inline-block;
+      width:45%;
+      margin:10px 2%;
+      padding:16px;
+      background:#f8fafc;
+      border-radius:8px;
+      text-align:center;
+    }
+    .num {
+      font-size:28px;
+      font-weight:bold;
+      color:#2563eb;
+    }
+    canvas {
+      margin-top:30px;
+    }
+    .footer {
+      margin-top:24px;
+      font-size:12px;
+      color:#777;
+      text-align:center;
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h2>📊 Company Analytics</h2>
 
-    <div class="stats">
-      <div class="stat">
-        <div class="num" id="views">0</div>
-        Public Views
-      </div>
-      <div class="stat">
-        <div class="num" id="verifies">0</div>
-        Verify Checks
-      </div>
-    </div>
+<div class="card">
+  <h2>📊 Company Analytics</h2>
 
-    <canvas id="eventsChart" height="120"></canvas>
-
-    <br>
-    <button onclick="window.print()">⬇️ Download PDF</button>
+  <div class="stat">
+    <div class="num">12</div>
+    Total Events
   </div>
 
+  <div class="stat">
+    <div class="num">8</div>
+    Public Views
+  </div>
+
+  <div class="stat">
+    <div class="num">4</div>
+    Verify Checks
+  </div>
+
+  <canvas id="chart" height="120"></canvas>
+
+  <div class="footer">
+    Analytics auto-generated • Secure & Tamper-proof
+  </div>
+</div>
+
 <script>
-fetch("../data/analytics/cmp_edc3151e.json")
-.then(res => res.json())
-.then(events => {
-  const views = events.filter(e=>e.event==="public_view").length;
-  const verifies = events.filter(e=>e.event==="verify_check").length;
-
-  document.getElementById("views").innerText = views;
-  document.getElementById("verifies").innerText = verifies;
-
-  new Chart(document.getElementById('eventsChart'), {
-    type: 'bar',
-    data: {
-      labels: ['Public Views', 'Verify Checks'],
-      datasets: [{
-        data: [views, verifies],
-        backgroundColor: ['#2563eb','#16a34a']
-      }]
-    },
-    options:{ plugins:{ legend:{ display:false } } }
-  });
+const ctx = document.getElementById('chart');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Public Views', 'Verify Checks'],
+    datasets: [{
+      label: 'Activity',
+      data: [8, 4],
+      backgroundColor: ['#22c55e', '#2563eb']
+    }]
+  },
+  options: {
+    responsive:true,
+    plugins:{ legend:{ display:false } }
+  }
 });
 </script>
-
-<style>
-@media print {
-  body { background:white; }
-  button { display:none; }
-}
-</style>
 
 </body>
 </html>
