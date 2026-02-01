@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DPP Company Onboarding</title>
+<style>
+body{font-family:Arial;background:#0b1d3a;color:#fff;padding:40px}
+.box{background:#fff;color:#000;padding:25px;border-radius:12px;max-width:420px;margin:auto}
+input,button{padding:10px;width:100%;margin:8px 0}
+code{background:#eee;padding:6px;display:block}
+</style>
+</head>
+
+<body>
+<div class="box">
+<h2>Company Onboarding</h2>
+
+<input id="name" placeholder="Company Name (e.g. PK Textiles)">
+<input id="country" placeholder="Country (PK)">
+<input id="industry" placeholder="Industry (Textiles)">
+
+<button onclick="gen()">Generate Company ID</button>
+
+<p id="out"></p>
+</div>
+
+<script>
+function gen(){
+ const n=document.getElementById("name").value.toLowerCase().replace(/ /g,"_");
+ const id=`cmp_${n}_${Date.now().toString().slice(-4)}`;
+ document.getElementById("out").innerHTML=`
+ <b>Company ID:</b>
+ <code>${id}</code>
+ Use this ID in products & analytics
+ `;
+}
+</script>
+</body>
+</html>
