@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Company Analytics</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+<h2>Company Analytics</h2>
+
+<p>Total Events: <span id="total"></span></p>
+<p>Public Views: <span id="views"></span></p>
+<p>Verify Checks: <span id="checks"></span></p>
+
+<canvas id="chart"></canvas>
+
+<script>
+const API_BASE="https://memorabilia-dom-appears-folk.trycloudflare.com";
+
+fetch(`${API_BASE}/api/analytics/cmp_textile_pk_001`)
+.then(r=>r.json())
+.then(d=>{
+  total.innerText=d.total_events;
+  views.innerText=d.public_views;
+  checks.innerText=d.verify_checks;
+
+  new Chart(document.getElementById("chart"),{
+    type:"bar",
+    data:{
+      labels:["Views","Verifications"],
+      datasets:[{data:[d.public_views,d.verify_checks]}]
+    }
+  });
+});
+</script>
+</body>
+</html>
