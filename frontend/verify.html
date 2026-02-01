@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Verify Product</title>
+</head>
+<body>
+  <h2>Verification Result</h2>
+  <pre id="result">Loading...</pre>
+
+  <script>
+    fetch("http://localhost:8000/api/verify/TSHIRT-SAAS-01")
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById("result").innerText =
+          JSON.stringify(d, null, 2);
+      });
+  </script>
+</body>
+</html>
