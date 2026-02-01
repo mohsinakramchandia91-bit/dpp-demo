@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Company Login</title>
+<style>
+body{font-family:Arial;background:#f4f6f8;padding:40px}
+.card{max-width:400px;margin:auto;background:white;padding:20px;border-radius:10px}
+input,button{width:100%;padding:10px;margin-top:10px}
+button{background:#2563eb;color:white;border:none;border-radius:6px}
+</style>
+</head>
+<body>
+
+<div class="card">
+<h2>Company Login</h2>
+<input id="token" placeholder="Enter company token">
+<button onclick="login()">Login</button>
+</div>
+
+<script>
+function login(){
+  const t=document.getElementById("token").value;
+  if(t==="CMP_EDC3151E"){
+    localStorage.setItem("auth",t);
+    window.location.href="analytics/";
+  }else{
+    alert("Invalid token");
+  }
+}
+</script>
+
+</body>
+</html>

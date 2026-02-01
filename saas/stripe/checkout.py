@@ -1,22 +1,17 @@
-import time
+import stripe
 from saas.stripe.config import PRICE_MAP
 
-def create_checkout_session(company_id, plan):
-    if plan not in PRICE_MAP:
-        raise ValueError("Invalid plan")
+stripe.api_key = "sk_test_YOUR_KEY"
 
-    price = PRICE_MAP[plan]
+def create_checkout(company_id, plan):
+    price = PRICE_MAP[plan]["price_id"]
 
-    # Stripe API call will go here later
-    # For now we simulate a real checkout session
-    session = {
-        "session_id": f"cs_{int(time.time())}",
-        "company_id": company_id,
-        "plan": plan,
-        "amount": price["amount"],
-        "currency": price["currency"],
-        "payment_url": f"https://checkout.stripe.com/pay/cs_test_{company_id}",
-        "status": "created"
-    }
+    session = stripe.checkout.Session.create(
+        mode="subscription",
+        payment_method_types=["card"],
+        line_items=[{"price": price, "quantity": 1}],
+        success_url=f"https://YOURDOMAIN/success.html?c={company_id}",
+        cancel_url=f"https://YOURDOMAIN/cancel.html"
+    )
 
-    return session
+    return session.url

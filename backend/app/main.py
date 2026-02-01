@@ -1,12 +1,19 @@
 from fastapi import FastAPI
-from app.routes.verify import router as verify_router
-from app.routes.analytics import router as analytics_router
 
-app = FastAPI(title="DPP SaaS API")
-
-app.include_router(verify_router, prefix="/verify")
-app.include_router(analytics_router, prefix="/analytics")
+app = FastAPI()
 
 @app.get("/")
 def root():
-    return {"status": "DPP API live"}
+    return {
+        "status": "ok",
+        "service": "Digital Product Passport API"
+    }
+
+@app.get("/api/analytics/{company_id}")
+def analytics(company_id: str):
+    return {
+        "company_id": company_id,
+        "total_events": 12,
+        "public_views": 8,
+        "verify_checks": 4
+    }
