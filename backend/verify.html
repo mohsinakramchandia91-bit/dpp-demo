@@ -8,13 +8,14 @@
     body { font-family:Arial; background:#0b1d3a; color:#fff; text-align:center; padding:60px 20px; }
     .box { background:#fff; color:#000; padding:30px; border-radius:12px; max-width:420px; margin:auto; }
     .pass { color:green; font-size:22px; font-weight:bold; }
+    .fail { color:red; font-size:18px; }
   </style>
 </head>
 <body>
 
 <div class="box">
   <h2>Product Verification</h2>
-  <p id="pid">Loading...</p>
+  <p id="pid"></p>
   <p id="status"></p>
   <p id="msg"></p>
 </div>
@@ -23,17 +24,24 @@
   const params = new URLSearchParams(window.location.search);
   const productId = params.get("product_id");
 
-  // 🔴 CHANGE THIS WHEN BACKEND GOES LIVE
+  if (!productId) {
+    document.getElementById("msg").innerHTML =
+      "<span class='fail'>❌ Product ID missing in QR</span>";
+    throw new Error("Missing product_id");
+  }
+
+  document.getElementById("pid").innerText = "Product ID: " + productId;
+
+  // 🔴 later yahan LIVE backend URL ayega
   const API_BASE = "http://localhost:8000";
 
   fetch(`${API_BASE}/api/verify/${productId}`)
     .then(res => res.json())
     .then(data => {
-      document.getElementById("pid").innerText = "Product ID: " + data.product_id;
       document.getElementById("status").innerHTML =
         data.status === "PASS"
-        ? "<span class='pass'>✅ PASS</span>"
-        : "❌ FAIL";
+          ? "<span class='pass'>✅ PASS</span>"
+          : "<span class='fail'>❌ FAIL</span>";
       document.getElementById("msg").innerText = data.message;
     })
     .catch(() => {
