@@ -1,0 +1,6 @@
+event_id,company_id,product_id,event_type,timestamp,region,status,confidence
+evt_001,cmp_edc3151e,TSHIRT-001,verify,2026-01-10T09:15:00Z,EU,PASS,92
+evt_002,cmp_edc3151e,TSHIRT-001,public_view,2026-01-10T09:16:12Z,EU,PASS,90
+evt_003,cmp_edc3151e,TSHIRT-002,verify,2026-01-10T10:02:41Z,EU,FAIL,45
+evt_004,cmp_abd88219,LEATHER-009,verify,2026-01-11T11:47:03Z,ASIA,PASS,88
+evt_005,cmp_abd88219,LEATHER-009,public_view,2026-01-11T11:48:55Z,ASIA,PASS,86

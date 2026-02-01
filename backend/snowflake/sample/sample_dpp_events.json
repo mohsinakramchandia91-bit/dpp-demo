@@ -1,0 +1,22 @@
+[
+  {
+    "event_id": "evt_001",
+    "company_id": "cmp_edc3151e",
+    "product_id": "TSHIRT-001",
+    "event_type": "verify",
+    "timestamp": "2026-01-10T09:15:00Z",
+    "region": "EU",
+    "status": "PASS",
+    "confidence": 92
+  },
+  {
+    "event_id": "evt_002",
+    "company_id": "cmp_edc3151e",
+    "product_id": "TSHIRT-001",
+    "event_type": "public_view",
+    "timestamp": "2026-01-10T09:16:12Z",
+    "region": "EU",
+    "status": "PASS",
+    "confidence": 90
+  }
+]
