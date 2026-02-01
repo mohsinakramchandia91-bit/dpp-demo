@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DPP Verification</title>
+  <style>
+    body { font-family: Arial; background:#0b1d3a; color:#fff; text-align:center; padding:60px 20px; }
+    .box { background:#fff; color:#000; padding:30px; border-radius:12px; max-width:420px; margin:auto; }
+    .pass { color:green; font-size:22px; font-weight:bold; }
+    .fail { color:red; font-size:18px; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Product Verification</h2>
+  <p id="pid"></p>
+  <p id="status"></p>
+  <p id="msg"></p>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const productId = params.get("product_id");
+
+if (!productId) {
+  document.getElementById("msg").innerHTML =
+    "<span class='fail'>❌ Product ID missing in QR</span>";
+  throw new Error("Missing product_id");
+}
+
+document.getElementById("pid").innerText = "Product ID: " + productId;
+
+// ✅ LIVE BACKEND (Cloudflare Tunnel)
+const API_BASE = "https://memorabilia-dom-appears-folk.trycloudflare.com";
+
+fetch(`${API_BASE}/api/verify/${productId}`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("status").innerHTML =
+      data.status === "PASS"
+        ? "<span class='pass'>✅ PASS</span>"
+        : "<span class='fail'>❌ FAIL</span>";
+
+    document.getElementById("msg").innerText = data.message;
+  })
+  .catch(() => {
+    document.getElementById("msg").innerText = "Backend not reachable";
+  });
+</script>
+
+</body>
+</html>
