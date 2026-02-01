@@ -1,21 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>DPP Platform</title>
+  <meta charset="UTF-8" />
+  <title>Digital Product Passport (DPP)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- QR generator -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#f5f7fb; }
+    header { background:#0b1d3a; color:#fff; padding:40px 20px; text-align:center; }
+    .container { max-width:1100px; margin:auto; padding:40px 20px; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+    .card { background:#fff; border-radius:12px; padding:25px; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,.08); }
+    .price { font-size:32px; font-weight:bold; margin:15px 0; }
+    .btn { display:inline-block; padding:10px 18px; background:#2563eb; color:#fff; border-radius:6px; text-decoration:none; margin-top:10px; }
+    .qr { margin-top:15px; }
+    footer { background:#0b1d3a; color:#cbd5e1; text-align:center; padding:20px; margin-top:40px; }
+  </style>
 </head>
 <body>
-<h1>Digital Product Passport</h1>
-<p>Pricing + QR Demo</p>
 
-<ul>
-  <li>Starter – $49</li>
-  <li>Business – $199</li>
-  <li>Enterprise – $999</li>
-</ul>
+<header>
+  <h1>Digital Product Passport (DPP)</h1>
+  <p>EU-ready product verification & buyer trust</p>
+</header>
 
-<p>
-<a href="verify.html">Open Verify Page</a>
-</p>
+<div class="container">
+
+  <h2 style="text-align:center;">Pricing</h2>
+
+  <div class="cards">
+
+    <!-- STARTER -->
+    <div class="card">
+      <h3>Starter</h3>
+      <div class="price">$49</div>
+      <p>Up to 50 products</p>
+      <div id="qr-starter" class="qr"></div>
+      <small>Scan demo product</small>
+    </div>
+
+    <!-- BUSINESS -->
+    <div class="card">
+      <h3>Business</h3>
+      <div class="price">$199</div>
+      <p>Up to 500 products</p>
+      <div id="qr-business" class="qr"></div>
+      <small>Scan company verification</small>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="card">
+      <h3>Enterprise</h3>
+      <div class="price">$999</div>
+      <p>Unlimited products</p>
+      <div id="qr-enterprise" class="qr"></div>
+      <small>Full audit trail</small>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  © 2026 Digital Product Passport Platform
+</footer>
+
+<script>
+  const base = window.location.origin + "/dpp-demo";
+
+  new QRCode("qr-starter", {
+    text: base + "/verify.html?product_id=TSHIRT-EXPORT-2026",
+    width: 120,
+    height: 120
+  });
+
+  new QRCode("qr-business", {
+    text: base + "/verify.html?product_id=COMPANY-cmp_textile_pk_001",
+    width: 120,
+    height: 120
+  });
+
+  new QRCode("qr-enterprise", {
+    text: base + "/verify.html?product_id=ENTERPRISE-DEMO",
+    width: 120,
+    height: 120
+  });
+</script>
+
 </body>
 </html>

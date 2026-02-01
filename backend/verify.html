@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Verify Product</title>
+  <meta charset="UTF-8">
+  <title>DPP Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family:Arial; background:#0b1d3a; color:#fff; text-align:center; padding:60px 20px; }
+    .box { background:#fff; color:#000; padding:30px; border-radius:12px; max-width:400px; margin:auto; }
+    .pass { color:green; font-size:22px; font-weight:bold; }
+  </style>
 </head>
 <body>
-<h2>Product Verification</h2>
-<p>Status: <b>PASS ✅</b></p>
-<p>DPP is valid & untampered</p>
+
+<div class="box">
+  <h2>Product Verification</h2>
+  <p id="pid"></p>
+  <p class="pass">✅ PASS</p>
+  <p>DPP valid & untampered</p>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const pid = params.get("product_id");
+  document.getElementById("pid").innerText = "Product ID: " + pid;
+</script>
+
 </body>
 </html>
