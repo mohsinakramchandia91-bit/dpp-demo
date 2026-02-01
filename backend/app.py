@@ -1,20 +1,23 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
+from db.database import get_db
+from auth.auth import require_api_key
 
 app = Flask(__name__)
 CORS(app)
 
 @app.route("/")
 def home():
-    return jsonify({
-        "service": "Digital Product Passport API",
-        "status": "ok"
-    })
+    return {"status": "ok", "service": "DPP SaaS API"}
 
-@app.route("/api/analytics/<company_id>")
-def analytics(company_id):
+@app.route("/api/analytics")
+def analytics():
+    company = require_api_key()
+    if not company:
+        return jsonify({"error": "Unauthorized"}), 401
+
     return jsonify({
-        "company_id": company_id,
+        "company_id": company["id"],
         "total_events": 12,
         "public_views": 8,
         "verify_checks": 4
@@ -25,7 +28,7 @@ def verify(product_id):
     return jsonify({
         "product_id": product_id,
         "status": "PASS",
-        "message": "DPP is valid & untampered"
+        "message": "Verified Digital Product Passport"
     })
 
 if __name__ == "__main__":
